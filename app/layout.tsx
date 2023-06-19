@@ -26,72 +26,67 @@ const profileJsonLd = toJsonLd<Person>({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Hayden Bleasel',
-  brand: ['Jellypepper', 'Beskar Labs'],
   jobTitle: 'Chief Product Officer',
   url: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '/').href,
   sameAs: [
-    'https://twitter.com/haydenbleasel',
-    'https://dribbble.com/haydenbleasel',
-    'https://www.instagram.com/hayden.bleasel/',
-    'https://github.com/haydenbleasel/',
-    'https://www.linkedin.com/in/haydenbleasel',
-    'https://www.producthunt.com/@haydenbleasel',
-    'https://open.spotify.com/user/haydenbleasel',
-    'https://www.figma.com/@haydenbleasel',
-    'https://haydenbleasel.medium.com/',
+    'https://twitter.com/sherodtaylor.eth',
+    'https://www.instagram.com/sherodtaylor/',
+    'https://github.com/sherodtaylor/',
+    'https://www.linkedin.com/in/sherodtaylor',
   ],
   image: new URL(
     '/images/profile.jpg',
     process.env.NEXT_PUBLIC_SITE_URL ?? '/'
   ).href,
-  alumniOf: 'University of Technology, Sydney',
+  alumniOf: 'General Assembly',
   birthPlace: {
     '@type': 'Place',
-    name: 'Sydney, Australia',
+    name: 'Seattle, Washington',
   },
-  familyName: 'Bleasel',
+  familyName: 'Taylor',
   description:
-    'Australian product designer and TypeScript developer living in the U.S.',
+    '',
   gender: 'Male',
   givenName: 'Hayden',
   worksFor: {
-    '@type': 'Organization',
-    name: 'Corellium',
+    '@type': 'Corporation',
+    name: 'Bloomberg LP',
   },
   workLocation: {
     '@type': 'Place',
-    name: 'Delray Beach, Florida',
+    name: 'New York, NY',
   },
   knowsLanguage: 'English',
   knowsAbout: [
     'Product Design',
-    'TypeScript Development',
+    'People Management',
     'Product Management',
+    'React',
+    'Golang',
+    'Python',
+    'GraphQL',
+    'API Driven Development',
+    'TypeScript',
   ],
   nationality: {
     '@type': 'Country',
-    name: 'Australia',
+    name: 'USA',
   },
 });
 
 const socialLinks = [
   {
-    href: 'https://twitter.com/haydenbleasel',
+    href: 'https://twitter.com/sherodtaylor',
     name: 'Twitter',
     image: '/images/social/twitter.svg',
   },
   {
-    href: 'https://github.com/haydenbleasel',
+    href: 'https://github.com/sherodtaylor',
     name: 'GitHub',
     image: '/images/social/github.svg',
   },
   {
-    href: 'https://dribbble.com/haydenbleasel',
-    name: 'Dribbble',
-    image: '/images/social/dribbble.svg',
-  },
-  {
-    href: 'https://www.linkedin.com/in/haydenbleasel/',
+    href: 'https://www.linkedin.com/in/sherodtaylor/',
     name: 'LinkedIn',
     image: '/images/social/linkedin.svg',
   },
@@ -145,20 +140,6 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
                 ))}
 
                 <hr className="m-2 border-neutral-300 dark:border-neutral-700" />
-
-                <Tooltip content="Colophon">
-                  <Link
-                    href="https://github.com/haydenbleasel/daylight/blob/main/README.md"
-                    className={clsx(
-                      'rounded p-2',
-                      'text-neutral-500 dark:text-neutral-400',
-                      'hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                    )}
-                    aria-label="Colophon"
-                  >
-                    <InformationCircleIcon width={16} height={16} />
-                  </Link>
-                </Tooltip>
 
                 <div>
                   <Tooltip content="Get in touch">
