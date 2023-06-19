@@ -20,6 +20,8 @@ type RootLayoutProps = {
   children: ReactNode;
 };
 
+
+console.log(process.env)
 const profileJsonLd = toJsonLd<Person>({
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -39,7 +41,7 @@ const profileJsonLd = toJsonLd<Person>({
     'https://haydenbleasel.medium.com/',
   ],
   image: new URL(
-    '/images/profile-large.jpg',
+    '/images/profile.jpg',
     process.env.NEXT_PUBLIC_SITE_URL ?? '/'
   ).href,
   alumniOf: 'University of Technology, Sydney',
@@ -97,6 +99,12 @@ const socialLinks = [
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet"/>
+    </head>
+
     <body
       className={clsx(
         sans.variable,

@@ -12,6 +12,7 @@ const config: Config = {
       fontFamily: {
         serif: ['var(--font-serif)', ...defaultTheme.fontFamily.serif],
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        fira: ['Fira Code', 'monospace']
       },
       typography: (theme: (str: string) => string) => ({
         DEFAULT: {
@@ -24,6 +25,7 @@ const config: Config = {
             p: {
               lineHeight: '160%',
               transition: 'color 0.2s ease-in-out',
+              fontFamily: theme('fontFamily.fira')
             },
             a: {
               fontWeight: theme('fontWeight.light'),
@@ -45,8 +47,8 @@ const config: Config = {
               color: theme('colors.neutral.950'),
               margin: 0,
               fontWeight: theme('fontWeight.light'),
-              fontFamily: [theme('fontFamily.serif')],
-              fontSize: '2rem',
+              fontFamily: [theme('fontFamily.fira')],
+              fontSize: '1rem',
               fontStyle: 'italic',
               '@screen sm': {
                 fontSize: '2.625rem',

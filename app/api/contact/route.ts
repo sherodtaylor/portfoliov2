@@ -11,6 +11,7 @@ type ContactRequest = {
 };
 
 export const POST = async (req: Request): Promise<Response> => {
+  console.log(process.env)
   const { name, email, message, type } = (await req.json()) as ContactRequest;
   const origin = new URL(req.headers.get('origin') ?? '').href;
   const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
