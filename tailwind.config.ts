@@ -58,12 +58,14 @@ const config: Config = {
               marginTop: 0,
               color: theme('colors.neutral.500'),
               fontSize: theme('fontSize.base'),
+              fontFamily: theme('fontFamily.fira'),
               fontWeight: theme('fontWeight.light'),
             },
             small: {
               color: theme('colors.neutral.500'),
               fontSize: theme('fontSize.xs'),
               fontWeight: theme('fontWeight.light'),
+              fontFamily: theme('fontFamily.fira'),
             },
             sup: {
               color: theme('colors.neutral.500'),

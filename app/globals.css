@@ -17,3 +17,105 @@ section > p:first-of-type {
 section > p:last-of-type {
   margin-bottom: 0;
 }
+
+.collage {
+  width: 780px;
+  aspect-ratio: 1.25;
+  position: relative
+}
+
+.large-media-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end
+}
+
+.c-goods {
+  width: 75%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1
+}
+
+.c-goods .browser-box .bb-content {
+  width: 100%;
+  aspect-ratio: 1.08;
+  background-image: url(/images/hiraya-landing.png);
+  background-size: 100% 100%
+}
+
+.c-tasks {
+  width: 36%;
+  position: absolute;
+  top: 51.5%;
+  left: -4%;
+  z-index: 2
+}
+
+.c-tasks .browser-box .bb-content {
+  width: 100%;
+  aspect-ratio: 0.7895;
+  /* background-image: url(/assets/tasks-37039c625852762b06f4152fec6523f2aafef50bac3214c2d1ae1317b86963e2.png); */
+  background-size: 100% 100%
+}
+
+.c-imgs {
+  width: 72%;
+  position: absolute;
+  top: 58%;
+  left: 28%;
+  z-index: 3
+}
+
+.c-imgs .browser-box .bb-content {
+  width: 100%;
+  aspect-ratio: 1.75;
+  /* background-image: url(/assets/imgs-b36915879bd0a2a221214023230ac87a83887e07bef9f75142c7fd9f42a83ee1.png); */
+  background-size: 100% 100%
+}
+
+.browser-box {
+  width: 100%;
+  display: inline-block;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #EEEEEE;
+  position: relative;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
+  transition: all ease 0.2s
+}
+
+.browser-box:hover {
+  transform: translate(0, -3px);
+  text-decoration: none
+}
+
+.browser-box>.bb-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  height: 24px;
+  background-image: url("/images/traffic-lights.svg"),url("/images/globe.svg");
+  background-position: 8px center, right 8px center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.browser-box>.bb-titlebar .tb-title {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Scto Grotesk A', sans-serif !important;
+  font-size: 10px
+}
+
+.browser-box .bb-content {
+    display: block;
+    background-color: #F6F6F6
+}
+
+.browser-box .bb-content>img {
+    width: 100%
+}

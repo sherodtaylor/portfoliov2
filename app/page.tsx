@@ -60,7 +60,7 @@ const Home: React.FC<{}> = async ({ }): Promise<ReactElement>  => {
           </div>
         </div>
       </Section>
-      <Section title="Work Experience">
+      <Section title="Work">
         <p>
           I currently serve as a Team Lead Engineering at{' '}
           <Link href="https://www.bloomberg.com/">Bloomberg</Link>. I am a Full stack developer and architect split between golang reactjs typescript and python.
@@ -75,9 +75,25 @@ const Home: React.FC<{}> = async ({ }): Promise<ReactElement>  => {
           <Link href="https://www.madison-reed.com/">Madison Reed</Link>, where I developed a fully custom CMS with Angular, MongoDB, and stylus that allowed us to focus on getting more features completed instead of having to build new landing pages.
         </p>
       </Section>
+      <Section title="Projects">
+        <p>
+          Hiraya skincare website built and designed by me with <Link href="https://webflow.com/">Webflow</Link> CMS.
+        </p>
+        <br/>
+        <div className="collage">
+          <div className="large-media-card c-goods">
+            <div className="browser-box">
+              <div className="bb-titlebar">
+                <div className="tb-title text-secondary">Hiraya</div>
+              </div>
+              <a href="https://livehiraya.com" target="_blank" className="bb-content"></a>
+            </div>
+          </div>
+        </div>
+      </Section>
       <Section title="Availability">
         <p>
-          I'm open to exploring new opportunities. If you're interested, please get in touch.
+          I'm also open to joining boards and advisory roles. If you're interested, please get in touch.        
         </p>
         <ContactButton />
       </Section>
