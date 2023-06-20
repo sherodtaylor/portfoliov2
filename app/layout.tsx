@@ -98,6 +98,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
     </head>
 
     <body
@@ -112,7 +113,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
           <TooltipProvider>
             <main className="prose prose-neutral mx-4 my-24 grid gap-16 dark:prose-invert sm:m-[11%] lg:m-[180px]">
               {children}
-              <div className="bottom-4 right-4 flex flex-row gap-1 sm:fixed sm:flex-col">
+              <div className="bottom-4 right-4 flex flex-row gap-1">
                 {socialLinks.map((link) => (
                   <Tooltip content={link.name} key={link.name}>
                     <Link
@@ -126,11 +127,11 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
                     >
                       <Image
                         src={link.image}
-                        width={16}
-                        height={16}
+                        width={30}
+                        height={30}
                         alt={link.name}
                         className={clsx(
-                          'm-0 h-4 w-4 object-contain',
+                          'm-0 h-6 w-6 object-contain',
                           link.name === 'GitHub' &&
                             'dark:brightness-0 dark:invert'
                         )}
@@ -140,7 +141,6 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
                 ))}
 
                 <hr className="m-2 border-neutral-300 dark:border-neutral-700" />
-
                 <div>
                   <Tooltip content="Get in touch">
                     <div>

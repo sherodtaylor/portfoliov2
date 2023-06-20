@@ -36,7 +36,7 @@ const ThemeSwitcher: FC = () => {
         onClick={handleThemeChange}
         aria-label="Toggle dark mode"
       >
-        <Component width={16} height={16} />
+        <Component className="h-6 w-6" width={36} height={36} />
       </button>
     </Tooltip>
   );

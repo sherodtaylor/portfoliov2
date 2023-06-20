@@ -19,8 +19,8 @@ section > p:last-of-type {
 }
 
 .collage {
-  width: 780px;
-  aspect-ratio: 1.25;
+  width: 100%;
+  aspect-ratio: 1.2;
   position: relative
 }
 

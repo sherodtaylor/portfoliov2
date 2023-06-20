@@ -19,7 +19,7 @@ const ContactIcon: FC = () => {
       aria-label="Get in touch"
       onClick={() => setOpen(true)}
     >
-      <ChatBubbleOvalLeftEllipsisIcon width={16} height={16} />
+      <ChatBubbleOvalLeftEllipsisIcon className='m-0 h-6 w-6 object-contain' width={28} height={28} />
     </button>
   );
 };
