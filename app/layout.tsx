@@ -25,13 +25,13 @@ console.log(process.env)
 const profileJsonLd = toJsonLd<Person>({
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Hayden Bleasel',
-  jobTitle: 'Chief Product Officer',
+  name: 'Sherod Taylor',
+  jobTitle: 'Platform Engineering Team Lead',
   url: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '/').href,
   sameAs: [
-    'https://twitter.com/sherodtaylor.eth',
-    'https://www.instagram.com/sherodtaylor/',
-    'https://github.com/sherodtaylor/',
+    'https://twitter.com/sherod_taylor',
+    'https://www.instagram.com/sherodtaylor',
+    'https://github.com/sherodtaylor',
     'https://www.linkedin.com/in/sherodtaylor',
   ],
   image: new URL(
@@ -43,11 +43,11 @@ const profileJsonLd = toJsonLd<Person>({
     '@type': 'Place',
     name: 'Seattle, Washington',
   },
-  familyName: 'Taylor',
   description:
     '',
   gender: 'Male',
-  givenName: 'Hayden',
+  givenName: 'Sherod',
+  familyName: 'Taylor',
   worksFor: {
     '@type': 'Corporation',
     name: 'Bloomberg LP',
@@ -76,7 +76,7 @@ const profileJsonLd = toJsonLd<Person>({
 
 const socialLinks = [
   {
-    href: 'https://twitter.com/sherodtaylor',
+    href: 'https://twitter.com/sherod_taylor',
     name: 'Twitter',
     image: '/images/social/twitter.svg',
   },
