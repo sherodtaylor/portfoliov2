@@ -27,6 +27,38 @@ const config: Config = {
               transition: 'color 0.2s ease-in-out',
               fontFamily: theme('fontFamily.fira')
             },
+            li: {
+              fontWeight: theme('fontWeight.light'),
+              textDecorationColor: theme('colors.neutral.300'),
+              textDecorationThickness: '1px',
+              textUnderlineOffset: '2.5px',
+              transition: 'text-decoration-color 0.2s ease-in-out',
+              '&:hover': {
+                textDecorationColor: 'inherit',
+              },
+              '&:focus': {
+                outline: 'none',
+                boxShadow: `0 0 0 2px ${theme('colors.neutral.400')}`,
+                textDecoration: 'none',
+                borderRadius: theme('borderRadius.sm'),
+              },
+            },
+            ul: {
+              fontWeight: theme('fontWeight.light'),
+              textDecorationColor: theme('colors.neutral.300'),
+              textDecorationThickness: '1px',
+              textUnderlineOffset: '2.5px',
+              transition: 'text-decoration-color 0.2s ease-in-out',
+              '&:hover': {
+                textDecorationColor: 'inherit',
+              },
+              '&:focus': {
+                outline: 'none',
+                boxShadow: `0 0 0 2px ${theme('colors.neutral.400')}`,
+                textDecoration: 'none',
+                borderRadius: theme('borderRadius.sm'),
+              },
+            },
             a: {
               fontWeight: theme('fontWeight.light'),
               textDecorationColor: theme('colors.neutral.300'),
@@ -56,7 +88,18 @@ const config: Config = {
             },
             h2: {
               marginTop: 0,
-              color: theme('colors.neutral.500'),
+              fontSize: theme('fontSize.base'),
+              fontFamily: theme('fontFamily.fira'),
+              fontWeight: theme('fontWeight.light'),
+            },
+            h3: {
+              marginTop: 0,
+              fontSize: theme('fontSize.base'),
+              fontFamily: theme('fontFamily.fira'),
+              fontWeight: theme('fontWeight.light'),
+            },
+            h4: {
+              marginTop: 0,
               fontSize: theme('fontSize.base'),
               fontFamily: theme('fontFamily.fira'),
               fontWeight: theme('fontWeight.light'),

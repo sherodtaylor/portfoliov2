@@ -9,6 +9,8 @@ import avatar from '@/public/images/profile.jpg';
 import { formatList, getDate } from '@/lib/utils';
 import { get } from '@vercel/edge-config';
 
+import JobHistory from '@/components/job';
+
 const updatedAt = getDate();
 
 type Metadata = {
@@ -61,19 +63,7 @@ const Home: React.FC<{}> = async ({ }): Promise<ReactElement>  => {
         </div>
       </Section>
       <Section title="Work">
-        <p>
-          I currently serve as a Team Lead Engineering at{' '}
-          <Link href="https://www.bloomberg.com/">Bloomberg</Link>. I am a Full stack developer and architect split between golang reactjs typescript and python.
-        </p>
-        <p>
-          Prior to that, I worked as a Software Engineer at{' '}
-          <Link href="https://www.itbit.com/">itBit</Link> and{' '}
-          <Link href="https://www.paxos.com/">Paxos</Link>. I used various technologies including Node.js, Python, Golang, Kotlin, React, and AWS, to name a few.
-        </p>
-        <p>
-          Early in my career, I was a Software Engineer at{' '}
-          <Link href="https://www.madison-reed.com/">Madison Reed</Link>, where I developed a fully custom CMS with Angular, MongoDB, and stylus that allowed us to focus on getting more features completed instead of having to build new landing pages.
-        </p>
+        <JobHistory />
       </Section>
       <Section title="Projects">
         <p>
