@@ -49,9 +49,9 @@ export const POST = async (req: Request): Promise<Response> => {
 
   try {
     const [response] =  await sendgrid.send({
-      to: process.env.EMAIL_ADDRESS, 
+      to: process.env.EMAIL_ADDRESS, // Your email where you'll receive emails
       from: process.env.EMAIL_ADDRESS, 
-      subject: `Message from ${name}`,
+      subject: `Urgent: Website Contact from ${name}`,
       replyTo: email,
       mailSettings: {
         footer: {
@@ -59,17 +59,21 @@ export const POST = async (req: Request): Promise<Response> => {
           text: `Sent on ${getDate()}`
         }
       },
-      html: `<div>I would like to ${typeLabel?.toLowerCase() ?? 'do something'}</div>`
+      html: `
+      <div>
+        <p>
+          I would like to ${typeLabel?.toLowerCase() ?? 'do something'}
+        </p>
+        <p>${message}</p>
+      </div>
+      `
     });
 
 
-    return res(response.statusCode, { message: response.body});
+    return res(response.statusCode, { message: "Successfully sent email"});
   } catch (error: unknown){
-    if (error instanceof ResponseError) {
-      return res(error.code, { message: error.message });
-    }
-
-    return res(500, {message: "internal error"})
+    console.log(error.response.body.errors)
+    return res(500, {message: error.message})
   }
 };
 
