@@ -2,6 +2,7 @@ import contactTypes from '@/lib/contact';
 import { parseError } from '@/lib/error';
 import { res } from '@/lib/response';
 import { getDate } from '@/lib/utils';
+import sendgrid from '@sendgrid/mail';
 
 type ContactRequest = {
   name?: string;
@@ -11,10 +12,12 @@ type ContactRequest = {
 };
 
 export const POST = async (req: Request): Promise<Response> => {
-  console.log(process.env)
+  console.log(process.env);
   const { name, email, message, type } = (await req.json()) as ContactRequest;
   const origin = new URL(req.headers.get('origin') ?? '').href;
   const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
+
+  sendgrid.setApiKey(process.env.SENDGRID_API_KEY ?? '');
 
   if (origin !== siteUrl) {
     return res(401, { message: 'Unauthorized' });
@@ -53,35 +56,32 @@ export const POST = async (req: Request): Promise<Response> => {
   )?.label;
 
   try {
-    const response = await fetch('https://comlink.beskar.co/api/send', {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-comlink-passphrase': process.env.COMLINK_PASSPHRASE,
+    const [response] = await sendgrid.send({
+      to: process.env.EMAIL_ADDRESS, // Your email where you'll receive emails
+      from: process.env.EMAIL_ADDRESS,
+      subject: `Urgent: Website Contact from ${name}`,
+      replyTo: email,
+      mailSettings: {
+        footer: {
+          enable: true,
+          text: `Sent on ${getDate()}`,
+        },
       },
-      method: 'POST',
-      body: JSON.stringify({
-        from: 'noreply@beskar.co',
-        to: process.env.EMAIL_ADDRESS,
-        subject: `Incoming message from ${name}`,
-        title: `Incoming message from ${name}`,
-        replyTo: email,
-        token: process.env.POSTMARK_SERVER_API_TOKEN,
-        body: `I would like to ${typeLabel?.toLowerCase() ?? 'do something'}.`,
-        outro: message,
-        footer: `Sent on ${getDate()}`,
-      }),
+      html: `
+      <div>
+        <p>
+          I would like to ${typeLabel?.toLowerCase() ?? 'do something'}
+        </p>
+        <p>${message}</p>
+      </div>
+      `,
     });
 
-    const data = (await response.json()) as { message: string };
+    const data = (await response.body) as { message: string };
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-
-    return res(200, { message: data.message });
-  } catch (error) {
-    const errorMessage = parseError(error);
-
-    return res(500, { message: errorMessage });
+    return res(response.statusCode, { message: 'Successfully sent email' });
+  } catch (error: any) {
+    console.log(error.response.body.errors);
+    return res(500, { message: error.message });
   }
 };
