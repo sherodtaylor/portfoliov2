@@ -2,6 +2,9 @@ import contactTypes from '@/lib/contact';
 import { parseError } from '@/lib/error';
 import { res } from '@/lib/response';
 import { getDate } from '@/lib/utils';
+import sendgrid, { ResponseError } from '@sendgrid/mail'
+
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 type ContactRequest = {
   name?: string;
@@ -53,35 +56,28 @@ export const POST = async (req: Request): Promise<Response> => {
   )?.label;
 
   try {
-    const response = await fetch('https://comlink.beskar.co/api/send', {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-comlink-passphrase': process.env.COMLINK_PASSPHRASE,
+    const [response] =  await sendgrid.send({
+      to: "sherodtaylor@gmail.com", // Your email where you'll receive emails
+      from: "sherodtaylor@gmail.com", // your website email address here
+      subject: `Message from ${name}`,
+      replyTo: email,
+      mailSettings: {
+        footer: {
+          enable: true,
+          text: `Sent on ${getDate()}`
+        }
       },
-      method: 'POST',
-      body: JSON.stringify({
-        from: 'noreply@beskar.co',
-        to: process.env.EMAIL_ADDRESS,
-        subject: `Incoming message from ${name}`,
-        title: `Incoming message from ${name}`,
-        replyTo: email,
-        token: process.env.POSTMARK_SERVER_API_TOKEN,
-        body: `I would like to ${typeLabel?.toLowerCase() ?? 'do something'}.`,
-        outro: message,
-        footer: `Sent on ${getDate()}`,
-      }),
+      html: `<div>I would like to ${typeLabel?.toLowerCase() ?? 'do something'}</div>`
     });
 
-    const data = (await response.json()) as { message: string };
 
-    if (!response.ok) {
-      throw new Error(data.message);
+    return res(response.statusCode, { message: response.body});
+  } catch (error: unknown){
+    if (error instanceof ResponseError) {
+      return res(error.code, { message: error.message });
     }
 
-    return res(200, { message: data.message });
-  } catch (error) {
-    const errorMessage = parseError(error);
-
-    return res(500, { message: errorMessage });
+    return res(500, {message: "internal error"})
   }
 };
+

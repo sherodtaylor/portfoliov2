@@ -42,6 +42,7 @@ const config: Config = {
                 textDecoration: 'none',
                 borderRadius: theme('borderRadius.sm'),
               },
+              lineHeight: '160%',
             },
             ul: {
               fontWeight: theme('fontWeight.light'),
@@ -117,10 +118,6 @@ const config: Config = {
             },
             ol: {
               marginBottom: 0,
-            },
-            li: {
-              lineHeight: '160%',
-              transition: 'color 0.2s ease-in-out',
             },
           },
         },
