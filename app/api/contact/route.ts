@@ -72,8 +72,8 @@ export const POST = async (req: Request): Promise<Response> => {
 
     return res(response.statusCode, { message: "Successfully sent email"});
   } catch (error: unknown){
-    console.log(error.response.body.errors)
-    return res(500, {message: error.message})
+    console.log(error)
+    return res(500, {message: "internal error"})
   }
 };
 
