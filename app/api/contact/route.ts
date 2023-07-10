@@ -18,8 +18,8 @@ export const POST = async (req: Request): Promise<Response> => {
   const { name, email, message, type } = (await req.json()) as ContactRequest;
   const origin = new URL(req.headers.get('origin') ?? '').href;
   const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
-
   if (origin !== siteUrl) {
+    console.log(`siteurl: ${siteUrl}, origin: ${origin}`)
     return res(401, { message: 'Unauthorized' });
   }
 
