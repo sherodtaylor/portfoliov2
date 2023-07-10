@@ -23,14 +23,6 @@ export const POST = async (req: Request): Promise<Response> => {
     return res(401, { message: 'Unauthorized' });
   }
 
-  if (!process.env.COMLINK_PASSPHRASE) {
-    return res(500, { message: 'No Comlink passphrase provided' });
-  }
-
-  if (!process.env.POSTMARK_SERVER_API_TOKEN) {
-    return res(500, { message: 'No Postmark API token provided' });
-  }
-
   if (!process.env.EMAIL_ADDRESS) {
     return res(500, { message: 'No email address provided' });
   }
@@ -57,8 +49,8 @@ export const POST = async (req: Request): Promise<Response> => {
 
   try {
     const [response] =  await sendgrid.send({
-      to: "sherodtaylor@gmail.com", // Your email where you'll receive emails
-      from: "sherodtaylor@gmail.com", // your website email address here
+      to: process.env.EMAIL_ADDRESS, 
+      from: process.env.EMAIL_ADDRESS, 
       subject: `Message from ${name}`,
       replyTo: email,
       mailSettings: {
